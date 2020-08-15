@@ -39,8 +39,8 @@ use the value of $HTTPS_PROXY, and then $HTTP_PROXY"
   :init-value nil
   :lighter (:eval (concat "proxy["
                           (string-join
-                           (mapcar #'(lambda (x) (car x))
-                                   (seq-filter #'(lambda (x) (not (string= (car x) "no_proxy")))
+                           (mapcar (lambda (x) (car x))
+                                   (seq-filter (lambda (x) (not (string= (car x) "no_proxy")))
                                                url-proxy-services)) ",")
                           "]"
                           (when (eq nil (assoc "no_proxy" url-proxy-services))
@@ -86,8 +86,8 @@ and proxy status will show on mode-line. This function will set/unset
   "Use proxies on a group of S-expressions. This function respects `use-proxy-<protocol>-proxy'
 variables and provide a local `url-proxy-services' to argument `body'."
   `(let ((url-proxy-services
-          (mapcar #'(lambda (proto)
-                      (cons proto (use-proxy--get-proxy-by-protocol proto)))
+          (mapcar (lambda (proto)
+                    (cons proto (use-proxy--get-proxy-by-protocol proto)))
                   ,protos)))
      ,@body))
 
