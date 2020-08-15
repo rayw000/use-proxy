@@ -100,3 +100,4 @@ variables and provide a local `url-proxy-services' to argument `body'."
      ,@body))
 
 (provide 'use-proxy)
+;;; use-proxy.el ends here
