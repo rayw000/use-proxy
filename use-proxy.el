@@ -2,7 +2,7 @@
 
 ;;; Copyright (C) 2020-2020 Ray Wang
 
-;;; Author: Ray Wang <ray.hackmylife@gmail.com>
+;;; Author: Ray Wang <blueabysm@gmail.com>
 ;;; Keywords: proxy, emacs lisp, toggle
 ;;; URL: https://github.com/blueabys/use-proxy
 
