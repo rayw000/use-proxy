@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; use-proxy.el --- Use proxy globally or limiting to single s-expression.
 
 ;;; Copyright ()
