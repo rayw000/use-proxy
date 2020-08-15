@@ -39,7 +39,7 @@ use the value of $HTTPS_PROXY, and then $HTTP_PROXY"
   :init-value nil
   :lighter (:eval (concat "proxy["
                           (string-join
-                           (mapcar (lambda (x) (car x))
+                           (mapcar #'car
                                    (seq-filter (lambda (x) (not (string= (car x) "no_proxy")))
                                                url-proxy-services)) ",")
                           "]"
