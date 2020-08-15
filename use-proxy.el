@@ -35,6 +35,7 @@ use the value of $HTTPS_PROXY, and then $HTTP_PROXY"
 
 (defvar use-proxy--available-protocols '("http" "https"))
 
+;;;###autoload
 (define-minor-mode use-proxy-mode
   "Toggle proxy mode."
   :init-value nil
@@ -59,7 +60,8 @@ use the value of $HTTPS_PROXY, and then $HTTP_PROXY"
   (use-proxy--trim-proxy-address
    (symbol-value (intern-soft (format "use-proxy-%s-proxy" proto)))))
 
-(defun use-proxy-toggle-global ()
+;;;###autoload
+(defun use-proxy-toggle-proxies-global ()
   "Toggle if use proxies globally by set/unset no_proxy key in `url-proxy-services'."
   (interactive)
   (let ((no-proxy use-proxy-no-proxy))
@@ -68,7 +70,8 @@ use the value of $HTTPS_PROXY, and then $HTTP_PROXY"
       (setq url-proxy-services
             (assoc-delete-all "no_proxy" url-proxy-services)))))
 
-(defun use-proxy-toggle-proxy (proto)
+;;;###autoload
+(defun use-proxy-toggle-proto-proxy (proto)
   "Toggle proxy on/off. You can switch proxy per protocol,
 and proxy status will show on mode-line. This function will set/unset
 `url-proxy-services' to enable/disable proxies."
@@ -83,6 +86,7 @@ and proxy status will show on mode-line. This function will set/unset
       (setq url-proxy-services
             (assoc-delete-all proto url-proxy-services)))))
 
+;;;###autoload
 (defmacro use-proxy-with-custom-proxies (protos &rest body)
   "Use proxies on a group of S-expressions. This function respects `use-proxy-<protocol>-proxy'
 variables and provide a local `url-proxy-services' to argument `body'."
@@ -92,6 +96,7 @@ variables and provide a local `url-proxy-services' to argument `body'."
                   ,protos)))
      ,@body))
 
+;;;###autoload
 (defmacro use-proxy-with-specified-proxies (protos-assoc &rest body)
   "Use proxies on a group of S-expressions. This function doesn't respect your custom
 `use-proxy-<protocol>-proxy' variables. It provides a local `url-proxy-services'
