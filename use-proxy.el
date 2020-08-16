@@ -1,11 +1,11 @@
-;;; use-proxy.el --- Enable/Disable proxies in Emacs respecting your HTTP/HTTPS env.  -*- lexical-binding: t; -*-
+;;; use-proxy.el --- Enable/Disable proxies respecting your HTTP/HTTPS env  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2020 Ray Wang <ray.hackmylife@gmail.com>
 
 ;; Author: Ray Wang <ray.hackmylife@gmail.com>
 ;; Version: 1.0.0
-;; Package-Requires: ((exec-path-from-shell "20200526.324"))
-;; Keywords: proxy, communication
+;; Package-Requires: ((exec-path-from-shell "20200526.324") (emacs "26.2"))
+;; Keywords: proxy, comm
 ;; URL: https://github.com/blueabysm/use-proxy
 
 ;; This file is not part of GNU Emacs.
