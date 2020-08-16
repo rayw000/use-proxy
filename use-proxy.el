@@ -133,7 +133,7 @@ If not set, it will first try to use the value of $NO_PROXY, and then\"^\\(local
 Because the former may lead name resolving errors."
   (if (stringp address)
       (car (last (split-string address "//")))
-    ""))
+    address))
 
 (defun use-proxy--get-custom-proxy-var-by-proto (proto)
   "Get proxy setting by protocol.
