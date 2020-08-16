@@ -92,6 +92,7 @@
 ;;; Code:
 ;; TODO better `mode-line' lighter
 ;; TODO toggle all proxies on/off
+;; TODO set proxies when this mode is enabled
 
 (require 'exec-path-from-shell)
 
