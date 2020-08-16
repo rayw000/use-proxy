@@ -2,7 +2,7 @@ use-package
 ====================================
 
 ### Introduction
-With this package you can easily enable/disable proxies per protocol in you Emacs. You could also use this package to provide proxy settings for a group of s-expressions. This package respects your HTTP\_PROXY, HTTPS\_PROXY and NO\_PROXY shell environment variables.
+With this package you can easily enable/disable proxies per protocol in you Emacs. You could also use this package to provide proxy settings for a group of s-expressions. This package respects your `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` shell environment variables.
 
 ### Install
 If you don't have ELPA package in your Emacs, clone this repository and load file.
@@ -29,13 +29,13 @@ You can bind keys to function `use-proxy-toggle-proto-proxy` and `use-proxy-togg
 This package provides these following variables you could customize:
 
 1. `use-proxy-http-proxy`
-   HTTP proxy you could use. If not set, the value of $HTTP\_PROXY in your environment will be used.
+   HTTP proxy you could use. If not set, the value of `$HTTP_PROXY` in your environment will be used.
 
-2. `use-proxy-https-proxy'
-   HTTPS proxy you could use. If not set, the value of $HTTPS\_PROXY in your environment will be used.
+2. `use-proxy-https-proxy`
+   HTTPS proxy you could use. If not set, the value of `$HTTPS_PROXY` in your environment will be used.
 
 3. `use-proxy-no-proxy`
-   A regular expression matches hosts you don't want to connect through proxy. If not set, the value of $NO\_PROXY in your environment will be used.
+   A regular expression matches hosts you don't want to connect through proxy. If not set, the value of `$NO_PROXY` in your environment will be used.
 
 ### Macros and functions
 
@@ -47,7 +47,7 @@ This package provides these following variables you could customize:
 
 Running this command will prompt you available protocols to choose to enable the corresponding proxy. Enabled proxies will be shown in the minor mode lighter.
 
-2. Toggle proxies global or not (respecting "no\_proxy" settings or not).
+2. Toggle proxies global or not (respect `no_proxy` settings or not).
 
 ```emacs-lisp
 (use-proxy-toggle-proxies-global)
