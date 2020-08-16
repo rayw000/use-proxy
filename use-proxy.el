@@ -128,6 +128,21 @@ If not set, it will first try to use the value of $NO_PROXY, and then\"^\\(local
   (and (stringp proxy)
        (string-match-p "^\\([0-9a-zA-Z_-]+\\.\\)?[0-9a-zA-Z_-]+\\(:[0-9]+\\)?$" proxy)))
 
+(defun use-proxy--trim-proxy-address (address)
+  "Trim proxy ADDRESS from '<scheme>://<host>:<port>' into '<host>:<port>'.
+Because the former may lead name resolving errors."
+  (if (stringp address)
+      (car (last (split-string address "//")))
+    ""))
+
+(defun use-proxy--get-custom-proxy-var-by-proto (proto)
+  "Get proxy setting by protocol.
+Argument PROTO protocol which you want to get proxy of."
+  (if (member proto use-proxy--available-protocols)
+      (use-proxy--trim-proxy-address
+       (symbol-value (intern-soft (format "use-proxy-%s-proxy" proto))))
+    (error "%s proxy is not supported yet" proto)))
+
 ;;;###autoload
 (define-minor-mode use-proxy-mode
   "Toggle proxy mode."
@@ -146,23 +161,8 @@ If not set, it will first try to use the value of $NO_PROXY, and then\"^\\(local
   :global t
   :after-hook (dolist (proto use-proxy--available-protocols)
                 (let* ((proxy (use-proxy--get-custom-proxy-var-by-proto proto)))
-                  (if (not (use-proxy--valid-proxy-p proxy))
-                      (warn "The value of `use-proxy-%s-proxy' is not a valid proxy. Got %s" proto proxy)))))
-
-(defun use-proxy--trim-proxy-address (address)
-  "Trim proxy ADDRESS from '<scheme>://<host>:<port>' into '<host>:<port>'.
-Because the former may lead name resolving errors."
-  (if (stringp address)
-      (car (last (split-string address "//")))
-    (error "Invalid value of argument `address'. Must be a string, got %s: %s" (type-of address) address)))
-
-(defun use-proxy--get-custom-proxy-var-by-proto (proto)
-  "Get proxy setting by protocol.
-Argument PROTO protocol which you want to get proxy of."
-  (if (member proto use-proxy--available-protocols)
-      (use-proxy--trim-proxy-address
-       (symbol-value (intern-soft (format "use-proxy-%s-proxy" proto))))
-    (error "%s proxy is not supported yet" proto)))
+                  (unless (use-proxy--valid-proxy-p proxy)
+                    (warn "The value of `use-proxy-%s-proxy' is not a valid proxy. Got %s" proto proxy)))))
 
 ;;;###autoload
 (defun use-proxy-toggle-proxies-global ()
@@ -186,9 +186,9 @@ Argument PROTO protocol which you want to enable/disable proxy for."
                  use-proxy--available-protocols
                  nil t ""))
          (proxy (use-proxy--get-custom-proxy-var-by-proto proto)))
-    (if (eq nil (assoc proto url-proxy-services))
-        (if (eq nil (use-proxy--get-custom-proxy-var-by-proto proto))
-            (warn "You haven't set variable `use-proxy-%s-proxy' or set it to nil in your customization." proto)
+    (if (not (assoc proto url-proxy-services))
+        (if (not (use-proxy--valid-proxy-p proxy))
+            (warn "Invalid `use-proxy-%s-proxy' value %s" proto proxy)
           (add-to-list 'url-proxy-services `(,proto . ,proxy))
           (message "%s proxy enabled" proto))
       (setq url-proxy-services
