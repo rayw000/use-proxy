@@ -6,7 +6,7 @@
 ;; Version: 1.0.0
 ;; Package-Requires: ((exec-path-from-shell "20200526.324"))
 ;; Keywords: proxy, environment, toggle
-;; URL: https://github.com/blueabys/use-proxy
+;; URL: https://github.com/blueabysm/use-proxy
 
 ;; This file is not part of GNU Emacs.
 
