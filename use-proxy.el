@@ -127,7 +127,7 @@ If not set, it will first try to use the value of $NO_PROXY, and then\"^\\(local
 (define-minor-mode use-proxy-mode
   "Toggle proxy mode."
   :init-value nil
-  :lighter (:eval (concat "proxy["
+  :lighter (:eval (concat "pxy["
                           (string-join
                            (mapcar #'car
                                    (seq-filter (lambda (x) (not (string= (car x) "no_proxy")))
