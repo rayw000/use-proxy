@@ -87,6 +87,7 @@
 ;;                                         ("https" . "localhost:8081")))
 
 ;;; Code:
+
 (require 'exec-path-from-shell)
 
 (defgroup use-proxy nil
