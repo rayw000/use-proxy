@@ -123,20 +123,31 @@ If not set, it will first try to use the value of $NO_PROXY, and then\"^\\(local
 
 (defvar use-proxy--available-protocols '("http" "https"))
 
+(defun use-proxy--valid-proxy-p (proxy)
+  "Check if proxy is valid."
+  (and (stringp proxy)
+       (string-match-p "^\\([0-9a-zA-Z_-]+\\.\\)?[0-9a-zA-Z_-]+\\(:[0-9]+\\)?$" proxy)))
+
 ;;;###autoload
 (define-minor-mode use-proxy-mode
   "Toggle proxy mode."
   :init-value nil
-  :lighter (:eval (concat "pxy["
-                          (string-join
-                           (mapcar #'car
-                                   (seq-filter (lambda (x) (not (string= (car x) "no_proxy")))
-                                               url-proxy-services)) ",")
-                          "]"
-                          (when (eq nil (assoc "no_proxy" url-proxy-services))
-                            "g")))
+  :lighter (:eval
+            (concat "pxy[" (string-join
+                            (mapcar #'car
+                                    (seq-filter
+                                     (lambda (x) (and (not (string= (car x) "no_proxy"))
+                                                      (use-proxy--valid-proxy-p (cdr x))))
+                                     url-proxy-services)) ",")
+                    "]"
+                    (when (eq nil (assoc "no_proxy" url-proxy-services))
+                      "g")))
   :group 'use-proxy
-  :global t)
+  :global t
+  :after-hook (dolist (proto use-proxy--available-protocols)
+                (let* ((proxy (use-proxy--get-custom-proxy-var-by-proto proto)))
+                  (if (not (use-proxy--valid-proxy-p proxy))
+                      (warn "The value of `use-proxy-%s-proxy' is not a valid proxy. Got %s" proto proxy)))))
 
 (defun use-proxy--trim-proxy-address (address)
   "Trim proxy ADDRESS from '<scheme>://<host>:<port>' into '<host>:<port>'.
@@ -145,7 +156,7 @@ Because the former may lead name resolving errors."
       (car (last (split-string address "//")))
     (error "Invalid value of argument `address'. Must be a string, got %s: %s" (type-of address) address)))
 
-(defun use-proxy--get-proxy-by-proto (proto)
+(defun use-proxy--get-custom-proxy-var-by-proto (proto)
   "Get proxy setting by protocol.
 Argument PROTO protocol which you want to get proxy of."
   (if (member proto use-proxy--available-protocols)
@@ -174,9 +185,9 @@ Argument PROTO protocol which you want to enable/disable proxy for."
                  "Switch proxy for: "
                  use-proxy--available-protocols
                  nil t ""))
-         (proxy (use-proxy--get-proxy-by-proto proto)))
+         (proxy (use-proxy--get-custom-proxy-var-by-proto proto)))
     (if (eq nil (assoc proto url-proxy-services))
-        (if (eq nil (use-proxy--get-proxy-by-proto proto))
+        (if (eq nil (use-proxy--get-custom-proxy-var-by-proto proto))
             (warn "You haven't set variable `use-proxy-%s-proxy' or set it to nil in your customization." proto)
           (add-to-list 'url-proxy-services `(,proto . ,proxy))
           (message "%s proxy enabled" proto))
@@ -192,7 +203,7 @@ and provide a local `url-proxy-services' to argument `BODY'.
 Argument PROTOS protocol list such as '(\"http\" \"https\")."
   `(let ((url-proxy-services
           (mapcar (lambda (proto)
-                    (cons proto (use-proxy--get-proxy-by-protocol proto)))
+                    (cons proto (use-proxy--get-custom-proxy-var-by-proto proto)))
                   ,protos)))
      ,@body))
 
