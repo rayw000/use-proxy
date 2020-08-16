@@ -142,13 +142,15 @@ If not set, it will first try to use the value of $NO_PROXY, and then\"^\\(local
 Because the former may lead name resolving errors."
   (if (stringp address)
       (car (last (split-string address "//")))
-    (error "Proxy address must be a string")))
+    (error "Invalid value of argument `address'. Must be a string, got %s: %s" (type-of address) address)))
 
 (defun use-proxy--get-proxy-by-proto (proto)
   "Get proxy setting by protocol.
 Argument PROTO protocol which you want to get proxy of."
-  (use-proxy--trim-proxy-address
-   (symbol-value (intern-soft (format "use-proxy-%s-proxy" proto)))))
+  (if (member proto use-proxy--available-protocols)
+      (use-proxy--trim-proxy-address
+       (symbol-value (intern-soft (format "use-proxy-%s-proxy" proto))))
+    (error "%s proxy is not supported yet." proto)))
 
 ;;;###autoload
 (defun use-proxy-toggle-proxies-global ()
