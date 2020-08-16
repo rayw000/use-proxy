@@ -178,7 +178,7 @@ Argument PROTO protocol which you want to enable/disable proxy for."
          (proxy (use-proxy--get-proxy-by-proto proto)))
     (if (eq nil (assoc proto url-proxy-services))
         (if (eq nil (use-proxy--get-proxy-by-proto proto))
-            (message "You haven't set variable `use-proxy-%s-proxy' in your customization." proto)
+            (message "You haven't set variable `use-proxy-%s-proxy' or set it to nil in your customization." proto)
           (add-to-list 'url-proxy-services `(,proto . ,proxy))
           (message "%s proxy enabled" proto))
       (setq url-proxy-services
