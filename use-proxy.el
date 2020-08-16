@@ -148,7 +148,7 @@ Argument PROTO protocol which you want to get proxy of."
   "Toggle proxy mode."
   :init-value nil
   :lighter (:eval
-            (concat "pxy[" (string-join
+            (concat "proxy[" (string-join
                             (mapcar #'car
                                     (seq-filter
                                      (lambda (x) (and (not (string= (car x) "no_proxy"))
