@@ -1,10 +1,12 @@
 ;;; use-proxy.el --- An easy way to enable/disable proxies in Emacs, and even limited to s-expressions. -*- lexical-binding: t; -*-
 
-;;; Copyright (C) 2020-2020 Ray Wang
+;; Copyright (C) 2020 Ray Wang <blueabysm@gmail.com>
 
-;;; Author: Ray Wang <blueabysm@gmail.com>
-;;; Keywords: proxy, emacs lisp, toggle
-;;; URL: https://github.com/blueabys/use-proxy
+;; Author: Ray Wang <blueabysm@gmail.com>
+;; Version: 1.0
+;; Package-Requires: ((exec-path-from-shell "20200526.324"))
+;; Keywords: proxy, environment, toggle
+;; URL: https://github.com/blueabys/use-proxy
 
 ;; This file is not part of GNU Emacs.
 
