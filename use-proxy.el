@@ -84,7 +84,8 @@
 ;;     You are required to provide a proxy setting association list.
 ;;
 ;;     (use-proxy-with-specified-proxies '(("http" . "localhost:8080")
-;;                                         ("https" . "localhost:8081")))
+;;                                         ("https" . "localhost:8081"))
+;;       (browse-url-emacs "https://www.google.com"))
 
 ;;; Code:
 
