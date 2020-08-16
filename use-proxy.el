@@ -3,8 +3,8 @@
 ;; Copyright (C) 2020 Ray Wang <ray.hackmylife@gmail.com>
 
 ;; Author: Ray Wang <ray.hackmylife@gmail.com>
-;; Version: 1.0.0
 ;; Package-Requires: ((exec-path-from-shell "1.12") (emacs "26.2"))
+;; Package-Version: 0
 ;; Keywords: proxy, comm
 ;; URL: https://github.com/blueabysm/use-proxy
 
