@@ -98,7 +98,7 @@
   :prefix "use-proxy-"
   :group 'comm)
 
-(when (memq window-system '(mac ns x))
+(with-eval-after-load 'exec-path-from-shell
   (exec-path-from-shell-initialize)
   (dolist (env '("HTTP_PROXY" "HTTPS_PROXY" "SOCKS" "NO_PROXY"))
     (exec-path-from-shell-copy-env env)))
