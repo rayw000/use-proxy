@@ -169,10 +169,10 @@ Argument PROTO protocol which you want to get proxy of."
   "Toggle proxies globally by set/unset no_proxy key in `url-proxy-services'."
   (interactive)
   (let ((no-proxy use-proxy-no-proxy))
-    (if (eq nil (assoc "no_proxy" url-proxy-services))
-        (add-to-list 'url-proxy-services `("no_proxy" . ,no-proxy))
-      (setq url-proxy-services
-            (assoc-delete-all "no_proxy" url-proxy-services)))))
+    (if (assoc "no_proxy" url-proxy-services)
+        (setq url-proxy-services
+              (assoc-delete-all "no_proxy" url-proxy-services))
+      (add-to-list 'url-proxy-services `("no_proxy" . ,no-proxy)))))
 
 ;;;###autoload
 (defun use-proxy-toggle-proto-proxy ()
