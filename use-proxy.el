@@ -1,4 +1,4 @@
-;;; use-proxy.el --- An easy way to enable/disable proxies in Emacs, and even limited to s-expressions. -*- lexical-binding: t; -*-
+;;; use-proxy.el --- Enable/Disable proxies in Emacs, and even limited to s-expressions. Respecting to your HTTP_PROXY/HTTPS_PROXY/NO_PROXY environment.  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2020 Ray Wang <blueabysm@gmail.com>
 
@@ -140,7 +140,8 @@ If not set, it will first try to use the value of $NO_PROXY, and then\"^\\(local
 (defun use-proxy--trim-proxy-address (address)
   "Trim proxy ADDRESS from '<scheme>://<host>:<port>' into '<host>:<port>'.
 Because the former may lead name resolving errors."
-  (car (last (split-string address "//"))))
+  (when (not (eq nil address))
+    (car (last (split-string address "//")))))
 
 (defun use-proxy--get-proxy-by-proto (proto)
   "Get proxy setting by protocol.
@@ -172,9 +173,13 @@ Argument PROTO protocol which you want to enable/disable proxy for."
                  nil t ""))
          (proxy (use-proxy--get-proxy-by-proto proto)))
     (if (eq nil (assoc proto url-proxy-services))
-        (add-to-list 'url-proxy-services `(,proto . ,proxy))
+        (if (eq nil (use-proxy--get-proxy-by-proto proto))
+            (message "You haven't set variable `use-proxy-%s-proxy' in your customization." proto)
+          (add-to-list 'url-proxy-services `(,proto . ,proxy))
+          (message "%s proxy enabled" proto))
       (setq url-proxy-services
-            (assoc-delete-all proto url-proxy-services)))))
+            (assoc-delete-all proto url-proxy-services))
+      (message "%s proxy disabled" proto))))
 
 ;;;###autoload
 (defmacro use-proxy-with-custom-proxies (protos &rest body)
