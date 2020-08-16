@@ -36,6 +36,8 @@ This package provides these following variables you could customize:
 
 3. `use-proxy-no-proxy`
    A regular expression matches hosts you don't want to connect through proxy. If not set, the value of `$NO_PROXY` in your environment will be used.
+   
+**NOTICE:** Do not forget to load your `custom-file` if you customized these variables.
 
 ### Macros and functions
 
