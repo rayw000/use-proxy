@@ -93,7 +93,8 @@
 
 (defgroup use-proxy nil
   "Use proxy globally or limited to single S-expression."
-  :prefix "use-proxy-")
+  :prefix "use-proxy-"
+  :group 'communication)
 
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize)
