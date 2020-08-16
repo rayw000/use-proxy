@@ -155,8 +155,7 @@ Argument PROTO protocol which you want to get proxy of."
                                                       (use-proxy--valid-proxy-p (cdr x))))
                                      url-proxy-services)) ",")
                     "]"
-                    (when (eq nil (assoc "no_proxy" url-proxy-services))
-                      "g")))
+                    (unless (assoc "no_proxy" url-proxy-services) "g")))
   :group 'use-proxy
   :global t
   :after-hook (dolist (proto use-proxy--available-protocols)
