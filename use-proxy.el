@@ -166,9 +166,8 @@ Argument PROTO protocol which you want to get proxy of."
 ;;;###autoload
 (defun use-proxy-toggle-proto-proxy ()
   "Toggle proxy on/off.
-You can switch proxy per protocol,
-and proxy status will show on mode-line.
- This function will set/unset `url-proxy-services' to enable/disable proxies.
+You can switch proxy per protocol, and proxy status will show on mode-line.
+This function will set/unset `url-proxy-services' to enable/disable proxies.
 Argument PROTO protocol which you want to enable/disable proxy for."
   (interactive)
   (let* ((proto (completing-read
