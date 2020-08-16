@@ -140,8 +140,9 @@ If not set, it will first try to use the value of $NO_PROXY, and then\"^\\(local
 (defun use-proxy--trim-proxy-address (address)
   "Trim proxy ADDRESS from '<scheme>://<host>:<port>' into '<host>:<port>'.
 Because the former may lead name resolving errors."
-  (when (not (eq nil address))
-    (car (last (split-string address "//")))))
+  (if (stringp address)
+      (car (last (split-string address "//")))
+    (error "Proxy address must be a string")))
 
 (defun use-proxy--get-proxy-by-proto (proto)
   "Get proxy setting by protocol.
