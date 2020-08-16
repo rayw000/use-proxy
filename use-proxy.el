@@ -126,7 +126,7 @@ If not set, it will first try to use the value of $NO_PROXY, and then\"^\\(local
 (defvar use-proxy--available-protocols '("http" "https"))
 
 (defun use-proxy--valid-proxy-p (proxy)
-  "Check if proxy is valid."
+  "Check if PROXY is valid."
   (and (stringp proxy)
        (string-match-p "^\\([0-9a-zA-Z_-]+\\.\\)?[0-9a-zA-Z_-]+\\(:[0-9]+\\)?$" proxy)))
 
