@@ -1,4 +1,4 @@
-use-package
+use-proxy
 ====================================
 
 ### Introduction
