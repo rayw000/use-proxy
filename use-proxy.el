@@ -1,4 +1,4 @@
-;;; use-proxy.el --- Enable/Disable proxies in Emacs, and even limited to s-expressions. Respecting to your HTTP_PROXY/HTTPS_PROXY/NO_PROXY environment.  -*- lexical-binding: t; -*-
+;;; use-proxy.el --- Enable/Disable proxies in Emacs respecting your HTTP/HTTPS env.  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2020 Ray Wang <blueabysm@gmail.com>
 
