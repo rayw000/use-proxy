@@ -151,7 +151,7 @@ Argument PROTO protocol which you want to get proxy of."
   (if (member proto use-proxy--available-protocols)
       (use-proxy--trim-proxy-address
        (symbol-value (intern-soft (format "use-proxy-%s-proxy" proto))))
-    (error "%s proxy is not supported yet." proto)))
+    (error "%s proxy is not supported yet" proto)))
 
 ;;;###autoload
 (defun use-proxy-toggle-proxies-global ()
