@@ -2,7 +2,7 @@ use-package
 ====================================
 
 ### Introduction
-With this package you can easily enable/disable proxies per protocol in you Emacs. You could also use this package to provide proxy settings for a group of s-expressions. This package respects your `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` shell environment variables.
+With this package you can easily enable/disable proxies per protocol in you Emacs. You could also use this package to provide proxy settings for a group of s-expressions. This package respects your `$HTTP_PROXY`, `$HTTPS_PROXY` and `$NO_PROXY` shell environment variables.
 
 ### Install
 If you don't have ELPA package in your Emacs, clone this repository and load file.
