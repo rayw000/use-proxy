@@ -122,7 +122,8 @@ use the value of $HTTPS_PROXY, and then $HTTP_PROXY"
 (defcustom use-proxy-no-proxy (or (getenv "NO_PROXY")
                                   "^\\(localhost\\|10\\..*\\|192\\.168\\..*\\)")
   "Regular expression described hosts you don't want to access through a proxy.
-If not set, it will first try to use the value of $NO_PROXY, and then\"^\\(localhost\\|10\\..*\\|192\\.168\\..*\\)\""
+If not set, it will first try to use the value of $NO_PROXY,
+and then\"^\\(localhost\\|10\\..*\\|192\\.168\\..*\\)\""
   :type '(string)
   :group 'use-proxy)
 
