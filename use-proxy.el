@@ -104,9 +104,7 @@
   :prefix "use-proxy-"
   :group 'comm)
 
-(exec-path-from-shell-initialize)
-(dolist (env '("HTTP_PROXY" "HTTPS_PROXY" "NO_PROXY"))
-  (exec-path-from-shell-copy-env env))
+(exec-path-from-shell-copy-envs '("HTTP_PROXY" "HTTPS_PROXY" "NO_PROXY"))
 
 (defcustom use-proxy-http-proxy (getenv "HTTP_PROXY")
   "HTTP proxy in HOST:PORT format, default is the value of $HTTP_PROXY."
