@@ -6,7 +6,7 @@
 ;; Package-Requires: ((exec-path-from-shell "1.12") (emacs "26.2"))
 ;; Package-Version: 0
 ;; Keywords: proxy, comm
-;; URL: https://github.com/blueabysm/use-proxy
+;; URL: https://github.com/rayw000/use-proxy
 
 ;; This file is not part of GNU Emacs.
 
