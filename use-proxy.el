@@ -94,6 +94,7 @@
 ;; TODO toggle all proxies on/off
 ;; TODO set proxies when this mode is enabled
 ;; TODO continuous integration
+;; TODO Proxy auto-config support
 
 (require 'exec-path-from-shell)
 
