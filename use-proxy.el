@@ -174,9 +174,12 @@ Argument PROTO protocol which you want to get proxy of."
   (interactive)
   (let ((no-proxy use-proxy-no-proxy))
     (if (assoc "no_proxy" url-proxy-services)
-        (setq url-proxy-services
-              (assoc-delete-all "no_proxy" url-proxy-services))
-      (add-to-list 'url-proxy-services `("no_proxy" . ,no-proxy)))))
+        (progn (setq url-proxy-services
+                     (assoc-delete-all "no_proxy" url-proxy-services))
+               (message "Global proxy mode on"))
+      (progn
+        (add-to-list 'url-proxy-services `("no_proxy" . ,no-proxy))
+        (message "Global proxy mode off")))))
 
 ;;;###autoload
 (defun use-proxy-toggle-proto-proxy ()
