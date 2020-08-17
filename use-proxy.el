@@ -74,7 +74,7 @@
 ;;
 ;;     `use-proxy-with-custom-proxies'
 ;;
-;;     Temporarily enable proxy for a batch of s-expressions.
+;;     Temporarily enable proxies for a batch of s-expressions.
 ;;     You are only required to provide a protocol list which you want to enable proxies for.
 ;;     This macro will read corresponding proxy settings from your customization variables.
 ;;
@@ -83,7 +83,7 @@
 ;;
 ;;     `use-proxy-with-specified-proxies'
 ;;
-;;     Temporarily enable proxy for a batch of s-expression.
+;;     Temporarily enable proxies for a batch of s-expression.
 ;;     You are required to provide a proxy setting association list.
 ;;
 ;;     (use-proxy-with-specified-proxies '(("http" . "localhost:8080")
