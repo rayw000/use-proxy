@@ -162,8 +162,8 @@ Argument PROTO protocol which you want to get proxy of."
                        (lambda (x)
                          (and (not (string= (car x) "no_proxy"))
                               (use-proxy--valid-proxy-p (cdr x))))
-                       url-proxy-services)
-                      ) ",")
+                       url-proxy-services))
+                     ",")
                     "]"
                     (unless (assoc "no_proxy" url-proxy-services) "g")))
   :group 'use-proxy
