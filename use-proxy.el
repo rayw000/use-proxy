@@ -103,7 +103,7 @@
   :group 'comm)
 
 (exec-path-from-shell-initialize)
-(dolist (env '("HTTP_PROXY" "HTTPS_PROXY" "SOCKS" "NO_PROXY"))
+(dolist (env '("HTTP_PROXY" "HTTPS_PROXY" "NO_PROXY"))
   (exec-path-from-shell-copy-env env))
 
 (defcustom use-proxy-http-proxy (getenv "HTTP_PROXY")
