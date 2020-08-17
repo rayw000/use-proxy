@@ -71,3 +71,7 @@ If using proxies globally, a "g" will be appended to lighter.
                                     ("https" . "localhost:8081"))
                                   (browse-url-emacs "https://www.google.com"))
 ```
+
+### How it works
+
+All `use-proxy` does is operating your `url-proxy-services` variable. Every time you toggle proxies, `url-proxy-services` will be saved into your `custom.el` file. When `use-proxy-mode` on, this variable will be loaded.
