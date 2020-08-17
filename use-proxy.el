@@ -27,6 +27,7 @@
 ;;; Commentary:
 ;; With this package you can easily enable/disable proxies per protocol in you Emacs.
 ;; You could also use this package to provide proxy settings for a group of s-expressions.
+;; All the package does to your environment is operating the global variable `url-proxy-services'.
 
 ;; Usage:
 ;;
