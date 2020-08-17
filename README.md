@@ -7,7 +7,7 @@ With this package you can easily enable/disable proxies per protocol in you Emac
 ### Install
 If you don't have ELPA package in your Emacs, clone this repository and load file.
 ```shell
-git clone https://github.com/blueabysm/use-proxy.git
+git clone https://github.com/rayw000/use-proxy.git
 ```
 ```emacs-lisp
 (load-file "/path/to/use-proxy/use-proxy.el")
