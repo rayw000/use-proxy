@@ -1,4 +1,6 @@
 [![Melpa Status](http://melpa.org/packages/use-proxy-badge.svg)](https://melpa.org/#/use-proxy)
+[![Build Status](https://github.com/rayw000/use-proxy/workflows/CI/badge.svg)](https://github.com/rayw000/use-proxy/actions)
+
 
 use-proxy
 ====================================
@@ -38,7 +40,7 @@ This package provides these following variables you could customize:
 
 3. `use-proxy-no-proxy`
    A regular expression matches hosts you don't want to connect through proxy. If not set, the value of `$NO_PROXY` in your environment will be used.
-   
+
 **NOTICE:** Do not forget to load your `custom-file` if you customized these variables.
 
 ### Macros and functions
