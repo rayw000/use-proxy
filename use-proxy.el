@@ -135,7 +135,7 @@ and then\"^\\(localhost\\|10\\..*\\|192\\.168\\..*\\)\""
 (defun use-proxy--valid-proxy-p (proxy)
   "Check if PROXY is valid."
   (and (stringp proxy)
-       (string-match-p "^\\([0-9a-zA-Z_-]+\\.\\)?[0-9a-zA-Z_-]+\\(:[0-9]+\\)?$" proxy)))
+       (string-match-p "^\\([0-9a-zA-Z_-]+\\.\\)*[0-9a-zA-Z_-]+\\(:[0-9]+\\)?$" proxy)))
 
 (defun use-proxy--trim-proxy-address (address)
   "Trim proxy ADDRESS from '<scheme>://<host>:<port>' into '<host>:<port>'.
