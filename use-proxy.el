@@ -29,6 +29,9 @@
 ;; You could also use this package to provide proxy settings for a group of s-expressions.
 ;; All the package does to your environment is operating the global variable `url-proxy-services',
 ;; Every time you enable/disable proxies, `url-proxy-services' will be saved into your `custom.el'.
+;;
+;; Similar packages:
+;; https://github.com/stardiviner/proxy-mode, https://github.com/twlz0ne/with-proxy.el
 
 ;; Usage:
 ;;
