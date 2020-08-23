@@ -109,13 +109,15 @@
 
 (exec-path-from-shell-copy-envs '("HTTP_PROXY" "HTTPS_PROXY" "NO_PROXY"))
 
-(defcustom use-proxy-http-proxy (getenv "HTTP_PROXY")
+(defcustom use-proxy-http-proxy (or (getenv "HTTP_PROXY")
+                                    "proxy.not.set")
   "HTTP proxy in HOST:PORT format, default is the value of $HTTP_PROXY."
   :type '(string)
   :group 'use-proxy)
 
 (defcustom use-proxy-https-proxy (or (getenv "HTTPS_PROXY")
-                                     (getenv "HTTP_PROXY"))
+                                     (getenv "HTTP_PROXY")
+                                     "proxy.not.set")
   "HTTPS proxy in HOST:PORT format.
 If not set, it will first try to
 use the value of $HTTPS_PROXY, and then $HTTP_PROXY"
