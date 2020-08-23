@@ -1,3 +1,5 @@
+[![Melpa Status](http://melpa.org/packages/use-proxy-badge.svg)](https://melpa.org/#/use-proxy)
+
 use-proxy
 ====================================
 
