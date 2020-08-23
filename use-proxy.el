@@ -191,16 +191,17 @@ Argument PROTO protocol which you want to get proxy of."
   (customize-save-variable 'url-proxy-services url-proxy-services))
 
 ;;;###autoload
-(defun use-proxy-toggle-proto-proxy ()
+(defun use-proxy-toggle-proto-proxy (proto)
   "Toggle proxy on/off.
 You can toggle proxy per protocol, and proxy status will show on mode-line.
 This function will set/unset `url-proxy-services' to enable/disable proxies.
 Argument PROTO protocol which you want to enable/disable proxy for."
-  (interactive)
-  (let* ((proto (completing-read
-                 "Toggle proxy for: "
-                 use-proxy--available-protocols
-                 nil t ""))
+  (interactive "P")
+  (let* ((proto (if proto proto
+                  (completing-read
+                   "Toggle proxy for: "
+                   use-proxy--available-protocols
+                   nil t "")))
          (proxy (use-proxy--get-custom-proxy-var-by-proto proto)))
     (if (not (assoc proto url-proxy-services))
         (if (not (use-proxy--valid-proxy-p proxy))
