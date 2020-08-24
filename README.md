@@ -1,6 +1,6 @@
 [![Melpa Status](http://melpa.org/packages/use-proxy-badge.svg)](https://melpa.org/#/use-proxy)
 [![Melpa Stable Status](http://stable.melpa.org/packages/use-proxy-badge.svg)](http://stable.melpa.org/#/use-proxy)
-[![Build Status](https://github.com/rayw000/use-proxy/workflows/CI/badge.svg)](https://github.com/rayw000/use-proxy/actions)
+[![Build Status](https://github.com/rayw000/use-proxy/workflows/test/badge.svg)](https://github.com/rayw000/use-proxy/actions)
 
 
 use-proxy
