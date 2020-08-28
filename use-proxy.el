@@ -154,23 +154,22 @@ Argument PROTO protocol which you want to get proxy of."
        (symbol-value (intern-soft (format "use-proxy-%s-proxy" proto))))
     (error "%s proxy is not supported yet" proto)))
 
+(defun use-proxy--modeline-string ()
+  (format "proxy[%s]%s"
+          (string-join
+           (mapcar #'car
+                   (seq-filter
+                    (lambda (x)
+                      (and (not (string= (car x) "no_proxy"))
+                           (use-proxy--valid-proxy-p (cdr x))))
+                    url-proxy-services)) ",")
+          (if (assoc "no_proxy" url-proxy-services) "" "g")))
+
 ;;;###autoload
 (define-minor-mode use-proxy-mode
   "Toggle proxy mode."
   :init-value nil
-  :lighter (:eval
-            (concat "proxy["
-                    (string-join
-                     (mapcar
-                      #'car
-                      (seq-filter
-                       (lambda (x)
-                         (and (not (string= (car x) "no_proxy"))
-                              (use-proxy--valid-proxy-p (cdr x))))
-                       url-proxy-services))
-                     ",")
-                    "]"
-                    (unless (assoc "no_proxy" url-proxy-services) "g")))
+  :lighter (:eval (use-proxy--modeline-string))
   :group 'use-proxy
   :global t
   :after-hook (dolist (proto use-proxy--available-protocols)
