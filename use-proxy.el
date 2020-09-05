@@ -185,11 +185,12 @@ Argument PROTO protocol which you want to get proxy of."
     (if (assoc "no_proxy" url-proxy-services)
         (progn (setq url-proxy-services
                      (assoc-delete-all "no_proxy" url-proxy-services))
+               (customize-save-variable 'url-proxy-services url-proxy-services)
                (message "Global proxy mode on"))
       (progn
         (add-to-list 'url-proxy-services `("no_proxy" . ,no-proxy))
-        (message "Global proxy mode off"))))
-  (customize-save-variable 'url-proxy-services url-proxy-services))
+        (customize-save-variable 'url-proxy-services url-proxy-services)
+        (message "Global proxy mode off")))))
 
 ;;;###autoload
 (defun use-proxy-toggle-proto-proxy (proto)
@@ -208,11 +209,12 @@ Argument PROTO protocol which you want to enable/disable proxy for."
         (if (not (use-proxy--valid-proxy-p proxy))
             (warn "Invalid `use-proxy-%s-proxy' value %s" proto proxy)
           (add-to-list 'url-proxy-services `(,proto . ,proxy))
+          (customize-save-variable 'url-proxy-services url-proxy-services)
           (message "%s proxy enabled" proto))
       (setq url-proxy-services
             (assoc-delete-all proto url-proxy-services))
-      (message "%s proxy disabled" proto)))
-  (customize-save-variable 'url-proxy-services url-proxy-services))
+      (customize-save-variable 'url-proxy-services url-proxy-services)
+      (message "%s proxy disabled" proto))))
 
 ;;;###autoload
 (defmacro use-proxy-with-custom-proxies (protos &rest body)
