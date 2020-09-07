@@ -60,7 +60,7 @@ Running this command will prompt you available protocols to choose to enable the
 (use-proxy-toggle-proxies-global)
 ```
 
-If using proxies globally, a "g" will be appended to lighter.
+If using proxies globally, a `g` will be appended to lighter.
 
 3. Temporarily enable proxy for a batch of s-expressions. You are only required to provide a protocol list which you want to enable proxies for. This macro will read corresponding proxy settings from your customization variables.
 
