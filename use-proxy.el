@@ -143,7 +143,7 @@ proxy states would still be visible in your mode line if you enable %M substitut
 (add-to-list 'global-mode-string
              '(:eval (when (and (bound-and-true-p use-proxy-mode)
                                 use-proxy-display-in-global-mode-string)
-                       (use-proxy--modeline-string)))
+                       (use-proxy--proxy-states)))
              'APPEND)
 
 (when (fboundp 'diminish)
@@ -169,8 +169,8 @@ Argument PROTO protocol which you want to get proxy of."
        (symbol-value (intern-soft (format "use-proxy-%s-proxy" proto))))
     (error "%s proxy is not supported yet" proto)))
 
-(defun use-proxy--modeline-string ()
-  (format " proxy[%s]%s"
+(defun use-proxy--proxy-states ()
+  (format "[%s]%s"
           (string-join
            (mapcar #'car
                    (seq-filter
@@ -179,6 +179,10 @@ Argument PROTO protocol which you want to get proxy of."
                            (use-proxy--valid-proxy-p (cdr x))))
                     url-proxy-services)) ",")
           (if (assoc "no_proxy" url-proxy-services) "" "g")))
+
+(defun use-proxy--modeline-string ()
+  (format " proxy%s"
+          (use-proxy--proxy-states)))
 
 ;;;###autoload
 (define-minor-mode use-proxy-mode
