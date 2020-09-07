@@ -138,7 +138,8 @@ and then\"^\\(localhost\\|10\\..*\\|192\\.168\\..*\\)\""
 (defcustom use-proxy-display-in-global-mode-string t
   "If non-nil, proxy states will also be added into `global-mode-string'.
 In which case even if you turn off minor mode list or work with `diminish',
-proxy states would still be visible in your mode line if you enable %M substitution.")
+proxy states would still be visible in your mode line if you enable %M substitution."
+  :type 'boolean)
 
 (add-to-list 'global-mode-string
              '(:eval (when (and (bound-and-true-p use-proxy-mode)
