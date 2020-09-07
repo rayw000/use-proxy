@@ -154,7 +154,7 @@ Argument PROTO protocol which you want to get proxy of."
     (error "%s proxy is not supported yet" proto)))
 
 (defun use-proxy--modeline-string ()
-  (format "proxy[%s]%s"
+  (format " proxy[%s]%s"
           (string-join
            (mapcar #'car
                    (seq-filter
