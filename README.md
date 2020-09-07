@@ -47,7 +47,7 @@ This package provides these following variables you could customize:
 
 4. `use-proxy-display-in-global-mode-string`
 
-   Boolean indicates whether display proxy states in `global-mode-string`.
+   Boolean indicates whether display proxy states in `global-mode-string`. If non-nil, proxy states will also be added into `global-mode-string`. In which case even if you turn off minor mode list or work with `diminish`, proxy states would still be visible in your mode line if you enable `%M` substitution.
 
 
 **NOTICE:** Do not forget to load your `custom-file` if you customized these variables.
