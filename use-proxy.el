@@ -146,9 +146,6 @@ proxy states would still be visible in your mode line if you enable %M substitut
                        (use-proxy--proxy-states)))
              'APPEND)
 
-(when (fboundp 'diminish)
-  (diminish 'use-proxy-mode "Pxy"))
-
 (defun use-proxy--valid-proxy-p (proxy)
   "Check if PROXY is valid."
   (and (stringp proxy)
