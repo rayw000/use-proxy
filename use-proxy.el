@@ -97,7 +97,6 @@
 ;;; Code:
 ;; TODO better `mode-line' lighter
 ;; TODO toggle all proxies on/off
-;; TODO continuous integration
 ;; TODO Proxy auto-config support
 
 (require 'exec-path-from-shell)
