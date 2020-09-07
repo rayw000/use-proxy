@@ -136,7 +136,7 @@ and then\"^\\(localhost\\|10\\..*\\|192\\.168\\..*\\)\""
 (defvar use-proxy--available-protocols '("http" "https"))
 
 (defcustom use-proxy-display-in-global-mode-string t
-  "If non-nil, minor mode string which stands for proxy states will also be added into `global-mode-string'.
+  "If non-nil, proxy states will also be added into `global-mode-string'.
 In which case even if you turn off minor mode list or work with `diminish',
 proxy states would still be visible in your mode line if you enable %M substitution.")
 
