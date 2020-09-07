@@ -95,7 +95,6 @@
 ;;       (browse-url-emacs "https://www.google.com"))
 
 ;;; Code:
-;; TODO better `mode-line' lighter
 ;; TODO toggle all proxies on/off
 ;; TODO Proxy auto-config support
 
