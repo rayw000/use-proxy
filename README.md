@@ -87,7 +87,7 @@ If using proxies globally, a `g` will be appended to lighter.
 
 ### How it works
 
-All `use-proxy` does is manipulating your `url-proxy-services` variable. Every time you toggle proxies, `url-proxy-services` will be saved into your `custom.el` file. When `use-proxy-mode` on, this variable will be loaded.
+All `use-proxy` does is manipulating your `url-proxy-services` variable. Every time you toggle proxies, `url-proxy-services` will be saved into your `custom.el` file. When `use-proxy-mode` is on, this variable will be loaded.
 
 ### Similar packages
 [with-proxy](https://github.com/twlz0ne/with-proxy.el), [proxy-mode](https://github.com/stardiviner/proxy-mode)
