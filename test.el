@@ -38,6 +38,21 @@
           (use-proxy-toggle-proto-proxy proto)
           (should (equal nil (assoc proto url-proxy-services))))))))
 
+(ert-deftest use-proxy-test-toggle-all-proxies ()
+  (dolist (repeat '(on off))
+    (if (equal nil url-proxy-services)
+        (progn
+          (use-proxy-toggle-all-proxies)
+          (dolist (proto use-proxy--available-protocols)
+            (should (equal (cons proto (use-proxy--get-custom-proxy-var-by-proto proto))
+                           (assoc proto url-proxy-services))))
+          (should (equal (cons "no_proxy" use-proxy-no-proxy)
+                         (assoc "no_proxy" url-proxy-services)))))
+    (if (not (equal nil url-proxy-services))
+        (progn
+          (use-proxy-toggle-all-proxies)
+          (should (equal nil url-proxy-services))))))
+
 (ert-deftest use-proxy-test-with-custom-proxies ()
   (use-proxy-with-custom-proxies use-proxy--available-protocols
                                  (dolist (proto use-proxy--available-protocols)

@@ -234,6 +234,17 @@ Argument PROTO protocol which you want to enable/disable proxy for."
       (message "%s proxy disabled" proto))))
 
 ;;;###autoload
+(defun use-proxy-toggle-all-proxies ()
+  "Toggle all proxies on/off."
+  (interactive)
+  (if url-proxy-services
+      (setq url-proxy-services '())
+    (dolist (proto use-proxy--available-protocols)
+      (let ((proxy (use-proxy--get-custom-proxy-var-by-proto proto)))
+        (push `(,proto . ,proxy) url-proxy-services)))
+    (push `("no_proxy" . ,use-proxy-no-proxy) url-proxy-services)))
+
+;;;###autoload
 (defmacro use-proxy-with-custom-proxies (protos &rest body)
   "Use proxies on a group of S-expressions.
 This function respects `use-proxy-<protocol>-proxy' variables,
