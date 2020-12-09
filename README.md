@@ -77,7 +77,13 @@ If using proxies globally, a `g` will be appended to lighter.
   (browse-url-emacs "https://www.google.com"))
 ```
 
-4. Temporarily enable proxy for a batch of s-expression. You are required to provide a proxy setting association list.
+4. Toggle all proxies on/off
+
+```emacs-lisp
+(use-proxy-toggle-all-proxies)
+```
+
+5. Temporarily enable proxy for a batch of s-expression. You are required to provide a proxy setting association list.
 
 ```emacs-lisp
 (use-proxy-with-specified-proxies '(("http" . "localhost:8080")
