@@ -4,17 +4,22 @@ on:
   push:
     paths-ignore:
     - '**.md'
+    - '**.org'
 
 jobs:
   build:
     name: Unit Test
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
         emacs-versions:
           - 26.2
           - 26.3
           - 27.1
+          - 27.2
           - snapshot
     steps:
     - uses: purcell/setup-emacs@master
