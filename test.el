@@ -12,10 +12,6 @@
 (require 'ert)
 (require 'use-proxy)
 
-(ert-deftest use-proxy-test-mode ()
-  "Tests enabling/disabling minor mode by invoking `use-proxy-mode'."
-  (should (not (equal nil (member 'use-proxy-mode minor-mode-list)))))
-
 (ert-deftest use-proxy-test-toggle-proxies-global ()
   (dolist (repeat '(on off))
     (if (assoc "no_proxy" url-proxy-services)
